@@ -21,12 +21,30 @@ struct Pessoa2 {
 
 
 //------------- COMO CRIAR UMA STRUCT COM DADOS LIDOS DO TECLADO --------------
+/*
 typedef struct {
     int idade;
     char sexo;
     char nome[100];
 }Pessoa;
+*/
 //_______________________________________________________________________
+
+
+//----------------------------- STRUCT DE STRUCT ---------------------------
+
+typedef struct {
+    int dia, mes, ano;
+}DataNas;
+
+typedef struct {
+    DataNas DataNas;
+    int idade;
+    char sexo;
+    char nome[100];
+}Pessoa;
+
+
 
 
 int main(void) {
@@ -48,7 +66,7 @@ int main(void) {
 
     
 //------------- COMO CRIAR UMA STRUCT COM DADOS LIDOS DO TECLADO --------------
-    
+    /*
     Pessoa pessoa;
 
     printf("Digite seu nome: ");
@@ -59,10 +77,26 @@ int main(void) {
     scanf(" %c", &pessoa.sexo);
 
     printf("\nNome: %sIdade: %d\nSexo: %c\n", pessoa.nome, pessoa.idade, pessoa.sexo);
-    
+    */
 //_________________________________________________________________________
 
 
-    
+//-------------------------- STRUCT DE STRUCT --------------------------
+    Pessoa pessoa;
+
+    printf("Digite seu nome: ");
+    fgets(pessoa.nome, 100, stdin);
+    printf("Digite sua idade: ");
+    scanf("%d", &pessoa.idade);
+    printf("Digie f ou m para o sexo: ");
+    scanf(" %c", &pessoa.sexo);
+    printf("Digite sua data de nascimento no formato dd mm aaaa: ");
+    scanf("%d%d%d", &pessoa.DataNas.dia, &pessoa.DataNas.mes, &pessoa.DataNas.ano);
+
+    printf("\nNome: %sIdade: %d\nSexo: %c\n", pessoa.nome, pessoa.idade, pessoa.sexo);
+    printf("Data de nascimento: %d/%d/%d\n", pessoa.DataNas.dia, pessoa.DataNas.mes, 
+           pessoa.DataNas.ano);
+
+//_________________________________________________________________________
   return 0;
 }
