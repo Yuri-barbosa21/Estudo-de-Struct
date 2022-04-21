@@ -52,6 +52,7 @@ typedef struct {
 
 
 //------------------ SCTRUCT COMO PARAMETRO PARA PROCEDIMENTO ------------------
+/*
 typedef struct {
     int dia, mes, ano;
 }DataNas;
@@ -64,10 +65,49 @@ typedef struct {
 }Pessoa;
 
 void ImprimirPessoa(Pessoa p){
-    printf("\tNome: %s", p.nome);
+    
+    printf("\n\tNome: %s", p.nome);
     printf("\tIdade: %d\n", p.idade);
     printf("\tSexo: %c\n", p.sexo);
-    printf("\tData de Nascimento: %d/0%d/%d\n", p.DataNas.dia, p.DataNas.mes, p.DataNas.ano);
+    printf("\tData de Nascimento: %d/%d/%d\n", p.DataNas.dia, p.DataNas.mes, p.DataNas.ano);
+}
+*/
+//______________________________________________________________________________
+
+
+
+//------------------------- FUNÇÃO QUE RETORNA UMA STRUCT -----------------------
+typedef struct {
+    int dia, mes, ano;
+}DataNas;
+
+typedef struct {
+    DataNas DataNas;
+    int idade;
+    char sexo;
+    char nome[100];
+}Pessoa;
+
+void ImprimirPessoa(Pessoa p){
+    
+    printf("\n\tNome: %s", p.nome);
+    printf("\tIdade: %d\n", p.idade);
+    printf("\tSexo: %c\n", p.sexo);
+    printf("\tData de Nascimento: %d/%d/%d\n", p.DataNas.dia, p.DataNas.mes, p.DataNas.ano);
+}
+
+Pessoa LerPessoa(){
+    Pessoa pessoa;
+    
+    printf("Digite seu nome: ");
+    fgets(pessoa.nome, 100, stdin);
+    printf("Digite sua idade: ");
+    scanf("%d", &pessoa.idade);
+    printf("Digie f ou m para o sexo: ");
+    scanf(" %c", &pessoa.sexo);
+    printf("Digite sua data de nascimento no formato dd mm aaaa: ");
+    scanf("%d%d%d", &pessoa.DataNas.dia, &pessoa.DataNas.mes, &pessoa.DataNas.ano);
+    return pessoa;
 }
 
 //______________________________________________________________________________
@@ -130,7 +170,9 @@ int main(void) {
 
 
     
-//------------------ SCTRUCT COMO PARAMETRO PARA PROCEDIMENTO ------------------
+    
+//------------------ STRUCT COMO PARAMETRO PARA PROCEDIMENTO ------------------
+    /*
     Pessoa pessoa;
     
     printf("Digite seu nome: ");
@@ -143,6 +185,20 @@ int main(void) {
     scanf("%d%d%d", &pessoa.DataNas.dia, &pessoa.DataNas.mes, &pessoa.DataNas.ano);
 
     ImprimirPessoa(pessoa); 
-//______________________________________________________________________________    
+    */
+//______________________________________________________________________________   
+
+
+
+
+//------------------------- FUNÇÃO QUE RETORNA UMA STRUCT -----------------------
+    
+    Pessoa pessoa;
+
+    pessoa = LerPessoa();
+    ImprimirPessoa(pessoa);
+    
+//______________________________________________________________________________ 
+
   return 0;
 }
